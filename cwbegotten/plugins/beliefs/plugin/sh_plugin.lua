@@ -366,7 +366,7 @@ end;
 COMMAND:Register();
 
 local COMMAND = Clockwork.command:New("DarkWhisper");
-COMMAND.tip = "Speak in tongues through the void to a target. If the target of this message is not of the Faith of the Dark or the Faith of the Sister then the message will be anonymous and will also drain your target's sanity, though it will result in a moderate amount of corruption for yourself.";
+COMMAND.tip = "Говорите через пустоту с персонажем, на которого вы смотрите. Если цель этого сообщения не принадлежит к Вере Тьмы или Вере Сестры, то сообщение будет анонимным и также истощит рассудок вашей цели, хотя это приведет к повышению вашей порчи.";
 COMMAND.text = "<string Name> <string Message>";
 COMMAND.flags = CMD_DEFAULT;
 COMMAND.arguments = 2;
@@ -403,25 +403,25 @@ function COMMAND:OnRun(player, arguments)
 					
 					player.nextDarkWhisper = curTime + 15;
 				else
-					Schema:EasyText(player, "chocolate", "You must wait another "..-math.ceil(curTime - player.nextDarkWhisper).." seconds before darkwhispering this character again!");
+					Schema:EasyText(player, "chocolate", "Ты должен подождать еще "..-math.ceil(curTime - player.nextDarkWhisper).." прежде чем использовать шепот мертвеца!");
 				end;
 				
 				target.lastDarkWhisperer = player;
 			else
-				Schema:EasyText(player, "chocolate", "You must have the 'Heretic' or 'Soothsayer' belief before you can darkwhisper!");
+				Schema:EasyText(player, "chocolate", "Ты должен иметь убеждение «Еретик» или «Видящий без Глаз», прежде чем сможешь общаться голосом мертвеца!!");
 			end
 		else
-			Schema:EasyText(player, "firebrick", "You are not the correct faith to do this!");
+			Schema:EasyText(player, "firebrick", "Ты не той фракции, чтобы сделать это!");
 		end
 	else
-		Schema:EasyText(player, "grey",arguments[1].." is not a valid character!");
+		Schema:EasyText(player, "grey",arguments[1].." это недействительный персонаж!");
 	end
 end;
 
 COMMAND:Register();
 
 local COMMAND = Clockwork.command:New("DarkWhisperDirect");
-COMMAND.tip = "Speak in tongues through the void to the character you are looking at. If the target of this message is not of the Faith of the Dark or the Faith of the Sister then the message will be anonymous and will also drain your target's sanity, though it will result in a moderate amount of corruption for yourself.";
+COMMAND.tip = "Говорите через пустоту с персонажем, на которого вы смотрите. Если цель этого сообщения не принадлежит к Вере Тьмы или Вере Сестры, то сообщение будет анонимным и также истощит рассудок вашей цели, хотя это приведет к повышению вашей порчи.";
 COMMAND.text = "<string Message>";
 COMMAND.flags = CMD_DEFAULT;
 COMMAND.arguments = 1;
@@ -463,13 +463,13 @@ function COMMAND:OnRun(player, arguments)
 				
 				target.lastDarkWhisperer = player;
 			else
-				Schema:EasyText(player, "chocolate", "You must have the 'Heretic' or 'Soothsayer' belief before you can darkwhisper!");
+				Schema:EasyText(player, "chocolate", "Ты должен иметь убеждение «Еретик» или «Видящий без Глаз», прежде чем сможешь общаться голосом мертвеца!");
 			end
 		else
-			Schema:EasyText(player, "firebrick", "You are not the correct faith to do this!");
+			Schema:EasyText(player, "firebrick", "Ты не той фракции, чтобы сделать это!");
 		end
 	else
-		Schema:EasyText(player, "firebrick", "You must look at a character!");
+		Schema:EasyText(player, "firebrick", "Ты должен смотреть на персонажа!");
 	end
 end;
 
@@ -502,7 +502,7 @@ end;
 COMMAND:Register();
 
 local COMMAND = Clockwork.command:New("DarkWhisperFaction");
-COMMAND.tip = "Speak in tongues through the void to your brethren.";
+COMMAND.tip = "Говори со своими братьями сквозь пустоту.";
 COMMAND.text = "<string Message>";
 COMMAND.flags = CMD_DEFAULT;
 COMMAND.arguments = 1;
@@ -530,7 +530,7 @@ function COMMAND:OnRun(player, arguments)
 					end;
 				end;
 			else
-				Schema:EasyText(player, "chocolate", "You must have the 'Heretic' or 'Soothsayer' belief before you can darkwhisper!");
+				Schema:EasyText(player, "chocolate", "Ты должен иметь убеждение «Еретик» или «Видящий без Глаз», прежде чем сможешь общаться голосом мертвеца!");
 			end
 		elseif faction == "Goreic Warrior" then
 			if player:HasBelief("heretic") or player:HasBelief("soothsayer") then
@@ -552,20 +552,20 @@ function COMMAND:OnRun(player, arguments)
 					end;
 				end;
 			else
-				Schema:EasyText(player, "chocolate", "You must have the 'Heretic' or 'Soothsayer' belief before you can darkwhisper!");
+				Schema:EasyText(player, "chocolate", "Ты должен иметь убеждение «Еретик» или «Видящий без Глаз», прежде чем сможешь общаться голосом мертвеца!");
 			end
 		else
-			Schema:EasyText(player, "firebrick", "You are not the correct faction to do this!");
+			Schema:EasyText(player, "firebrick", "Ты не той фракции, чтобы сделать это!");
 		end
 	else
-		Schema:EasyText(player, "firebrick", "You are not the correct faith to do this!");
+		Schema:EasyText(player, "firebrick", "Ты не той веры, чтобы сделать это!");
 	end
 end;
 
 COMMAND:Register();
 
 local COMMAND = Clockwork.command:New("DarkWhisperFactionProclaim");
-COMMAND.tip = "Speak in tongues with authority through the void to your brethren.";
+COMMAND.tip = "Властно говори через пустоту.";
 COMMAND.text = "<string Message>";
 COMMAND.flags = CMD_DEFAULT;
 COMMAND.arguments = 1;
@@ -580,7 +580,7 @@ function COMMAND:OnRun(player, arguments)
 		if faction == "Children of Satan" then
 			if player:HasBelief("heretic") or player:HasBelief("soothsayer") then
 				if !player:IsAdmin() and !Clockwork.player:HasFlags(player, "P") then
-					Schema:EasyText(player, "peru", "You are not important enough to do this!");
+					Schema:EasyText(player, "peru", "Ты недостаточно важен для этого!");
 				
 					return false;
 				end
@@ -601,7 +601,7 @@ function COMMAND:OnRun(player, arguments)
 					end;
 				end;
 			else
-				Schema:EasyText(player, "chocolate", "You must have the 'Heretic' or 'Soothsayer' belief before you can darkwhisper!");
+				Schema:EasyText(player, "chocolate", "Ты должен иметь убеждение «Еретик» или «Видящий без Глаз», прежде чем сможете произносить темные шепоты!!");
 			end
 		elseif faction == "Goreic Warrior" then
 			if player:HasBelief("heretic") or player:HasBelief("soothsayer") then
@@ -631,13 +631,13 @@ function COMMAND:OnRun(player, arguments)
 					end;
 				end;
 			else
-				Schema:EasyText(player, "chocolate", "You must have the 'Heretic' or 'Soothsayer' belief before you can darkwhisper!");
+				Schema:EasyText(player, "chocolate", "Ты должен иметь убеждение «Еретик» или «Видящий без Глаз», прежде чем сможете говорить голосом мертвеца!");
 			end
 		else
-			Schema:EasyText(player, "firebrick", "You are not the correct faction to do this!");
+			Schema:EasyText(player, "firebrick", "Вы не той фракции, чтобы сделать это!");
 		end
 	else
-		Schema:EasyText(player, "firebrick", "You are not the correct faith to do this!");
+		Schema:EasyText(player, "firebrick", "Вы не той подфракции, чтобы сделать это!");
 	end
 end;
 
@@ -677,20 +677,20 @@ function COMMAND:OnRun(player, arguments)
 					end;
 				end;
 			else
-				Schema:EasyText(player, "chocolate", "You must have the 'Heretic' or 'Soothsayer' belief before you can darkwhisper!");
+				Schema:EasyText(player, "chocolate", "Ты должен иметь убеждение «Еретик» или «Видящий без Глаз», прежде чем сможете говорить голосом мертвеца!");
 			end
 		else
-			Schema:EasyText(player, "firebrick", "You are not the correct faction to do this!");
+			Schema:EasyText(player, "firebrick", "Ты не той фракции, чтобы сделать это!");
 		end
 	else
-		Schema:EasyText(player, "firebrick", "You are not the correct subfaction to do this!");
+		Schema:EasyText(player, "firebrick", "Твоя не той подфракции, чтобы сделать это!");
 	end
 end;
 
 COMMAND:Register();
 
 local COMMAND = Clockwork.command:New("DarkWhisperFactionKinisgerProclaim");
-COMMAND.tip = "Speak in tongues with authority through the void to your pretend brethren.";
+COMMAND.tip = "Поговори со своими братьями через черный шепот, подчеркнув свою важность.";
 COMMAND.text = "<string Message>";
 COMMAND.flags = CMD_DEFAULT;
 COMMAND.arguments = 1;
@@ -729,13 +729,13 @@ function COMMAND:OnRun(player, arguments)
 					end;
 				end;
 			else
-				Schema:EasyText(player, "chocolate", "You must have the 'Heretic' or 'Soothsayer' belief before you can darkwhisper!");
+				Schema:EasyText(player, "chocolate", "Ты должен иметь убеждение «Еретик» или «Видящий без Глаз», прежде чем сможете говорить голосом мертвеца!");
 			end
 		else
-			Schema:EasyText(player, "firebrick", "You are not the correct faction to do this!");
+			Schema:EasyText(player, "firebrick", "Ты не той фракции, чтобы сделать это!");
 		end
 	else
-		Schema:EasyText(player, "firebrick", "You are not the correct subfaction to do this!");
+		Schema:EasyText(player, "firebrick", "Ты не той подфракции, чтобы сделать это!");
 	end
 end;
 
@@ -743,7 +743,7 @@ COMMAND:Register();
 
 
 local COMMAND = Clockwork.command:New("DarkReply");
-COMMAND.tip = "Using all your willpower, reply to a darkwhisper sent to you through the void. Note that this will incur a small amount of corruption if you are not of the Faith of the Dark.";
+COMMAND.tip = "Используя всю свою силу воли, ответьте на темный шепот, посланный вам через пустоту. Обратите внимание, что это повлечет за собой небольшое количество порчи, если вы не принадлежите к Вере Тьмы.";
 COMMAND.text = "<string Message>";
 COMMAND.flags = CMD_DEFAULT;
 COMMAND.arguments = 1;
@@ -763,14 +763,14 @@ function COMMAND:OnRun(player, arguments)
 			player:HandleNeed("corruption", 5);
 		end;
 	else
-		Schema:EasyText(player, "firebrick", "There is no darkwhisper to reply to!");
+		Schema:EasyText(player, "firebrick", "Нет темного шепота, на который бы ты мог ответить!");
 	end
 end;
 
 COMMAND:Register();
 
 local COMMAND = Clockwork.command:New("Pray");
-COMMAND.tip = "Make a prayer to the ones who rule you. Prepare for the consequences of doing so.";
+COMMAND.tip = "Помолитесь тем, кто вами правит. Будьте готовы к последствиям.";
 COMMAND.text = "<string Message>";
 COMMAND.flags = CMD_DEFAULT;
 COMMAND.arguments = 1;
@@ -908,12 +908,12 @@ function COMMAND:OnRun(player, arguments)
 			Schema:EasyText(admins, ringcolor, "[PRAYER ", color, faith_str, markedcolor, markedstr, ringcolor, "] ", plycol, player:Name(), "ivory", ": "..message)
 			Schema:EasyText(player, color, "You make a prayer: \""..message.."\"")
 			
-			Clockwork.chatBox:AddInTargetRadius(player, "me", "mumbles a short prayer to the gods.", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
+			Clockwork.chatBox:AddInTargetRadius(player, "me", "бормочет молитву богам.", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
 		else
-			Schema:EasyText(player, "chocolate", "You must select a subfaith in the 'Beliefs' menu before you can pray!");
+			Schema:EasyText(player, "chocolate", "Прежде чем молиться, вам необходимо выбрать подконфессию!");
 		end
 	else
-		Schema:EasyText(player, "chocolate", "You have no gods to pray to!");
+		Schema:EasyText(player, "chocolate", "У тебя нет покровителя, которому бы ты мог помолиться!");
 	end
 end;
 
@@ -966,7 +966,7 @@ end;
 COMMAND:Register();
 
 local COMMAND = Clockwork.command:New("Relay");
-COMMAND.tip = "Speak through aerial electrical signals to your Voltist brethren.";
+COMMAND.tip = "Поговорите с вашими братьями-вольтистами посредством воздушных электрических сигналов.";
 COMMAND.text = "<string Message>";
 COMMAND.flags = CMD_DEFAULT;
 COMMAND.arguments = 1;
@@ -987,17 +987,17 @@ function COMMAND:OnRun(player, arguments)
 				end;
 			end;
 		else
-			Schema:EasyText(player, "chocolate", "You must have the 'Wire Therapy' belief before you can relay!");
+			Schema:EasyText(player, "chocolate", "У вас должно быть убеждение «Проводная Терапия», чтобы использовать передачу!");
 		end
 	else
-		Schema:EasyText(player, "firebrick", "You are not the correct faith to do this!");
+		Schema:EasyText(player, "firebrick", "Ты не той веры, чтобы сделать это!");
 	end
 end;
 
 COMMAND:Register();
 
 local COMMAND = Clockwork.command:New("Warcry");
-	COMMAND.tip = "Terrify your foes into submission with a feral yell. This will negatively affect the sanity of anyone within yelling distance that isn't of your faith.";
+	COMMAND.tip = "Устрашайте своих врагов диким воплем. Это негативно повлияет на рассудок любого, кто окажется в пределах досягаемости крика, если он не вашей веры.";
 	COMMAND.flags = CMD_DEFAULT;
 
 	-- Called when the command has been run.
@@ -1193,12 +1193,12 @@ local COMMAND = Clockwork.command:New("Warcry");
 						player:EmitSound("warcries/warcry_female"..math.random(1, 16)..".mp3", 100, math.random(90, 105));
 					end
 					
-					Clockwork.chatBox:AddInTargetRadius(player, "me", "lets out a feral warcry!", playerPos, radius);
+					Clockwork.chatBox:AddInTargetRadius(player, "me", "издает вопль, полный дикости и бесстрашия!", playerPos, radius);
 				else
 					player:HandleSanity(-5);
 					player:EmitSound("warcries/twistedwarcry"..math.random(1, 5)..".mp3", 100, math.random(90, 105));
 					
-					Clockwork.chatBox:AddInTargetRadius(player, "me", "lets out a twisted warcry, screaming with the voices of their past victims!", playerPos, radius);
+					Clockwork.chatBox:AddInTargetRadius(player, "me", "издает нечестивый вопль, крича множественными голосами своих прошлых жертв!", playerPos, radius);
 				end
 				
 				if player_has_fearsome_wolf or player_has_daring_trout then
@@ -1234,16 +1234,16 @@ local COMMAND = Clockwork.command:New("Warcry");
 				
 				player.lastWarCry = curTime + 60;
 			else
-				Schema:EasyText(player, "firebrick", "You cannot war cry again for "..tostring(math.Round(player.lastWarCry - curTime)).." more seconds!");
+				Schema:EasyText(player, "firebrick", "Ты не сможешь использовать боевой клич еще "..tostring(math.Round(player.lastWarCry - curTime)).." секунд!");
 			end
 		else
-			Schema:EasyText(player, "firebrick", "You are not of the correct subfaith to do this!");
+			Schema:EasyText(player, "firebrick", "Твоя подвера не имеет боевых кличей!");
 		end
 	end;
 COMMAND:Register();
 
 local COMMAND = Clockwork.command:New("Electrocute");
-COMMAND.tip = "Electrocute yourself to stimulate your mind. This will regain some sanity but cause damage to yourself. Requires a 'Tech' or 'Technocraft' item in your inventory, and will take a small amount of condition from it.";
+COMMAND.tip = "Ударьте себя током, чтобы стимулировать свой разум. Это даст вам немного рассудка, но нанесет вам урон. Требует предмет «Микросхема» или «Технокрафт» в вашем инвентаре и отнимет у него небольшое количество состояния.";
 COMMAND.flags = CMD_DEFAULT;
 COMMAND.arguments = 0;
 
@@ -1307,29 +1307,29 @@ function COMMAND:OnRun(player, arguments)
 						techItemTable:SetCondition(condition);
 					end
 					
-					Clockwork.chatBox:AddInTargetRadius(player, "me", "begins convulsing as arcs of electricity eminate from their body!", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
+					Clockwork.chatBox:AddInTargetRadius(player, "me", "бьется в конвульсиях, когда через его тело проходит поток электрического тока!", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
 					
 					player.nextFlagellate = curTime + 1;
 				else
-					Schema:EasyText(player, "chocolate", "You do not have a 'Tech' item in your inventory!");
+					Schema:EasyText(player, "chocolate", "В вашем инвентаре нет предмета «Микросхема»!");
 				end
 			else
-				Schema:EasyText(player, "firebrick", "You cannot self-electrocute right now!");
+				Schema:EasyText(player, "firebrick", "Сейчас вы не можете ударить себя током!");
 			end;
 		else
-			Schema:EasyText(player, "firebrick", "You lack the willpower to do this!");
+			Schema:EasyText(player, "firebrick", "У вас не хватает силы воли сделать это!");
 		end
 		
 		player.nextFlagellate = curTime + 1;
 	else
-		Schema:EasyText(player, "firebrick", "You cannot self-electrocute right now!");
+		Schema:EasyText(player, "firebrick", "Сейчас вы не можете ударить себя током!");
 	end
 end;
 
 COMMAND:Register();
 
 local COMMAND = Clockwork.command:New("Flagellate");
-COMMAND.tip = "Repent for your sins by scourging your flesh.";
+COMMAND.tip = "Покайтесь в своих грехах, бичуя свою плоть.";
 COMMAND.flags = CMD_DEFAULT;
 COMMAND.arguments = 0;
 
@@ -1341,7 +1341,7 @@ function COMMAND:OnRun(player, arguments)
 		if player:HasBelief("flagellant") or player:GetSubfaction() == "Kinisger" then
 			if player:GetSharedVar("tied") == 0 and !player:IsRagdolled() then
 				if player.iFrames then
-					Schema:EasyText(player, "firebrick", "You cannot flagellate while rolling!");
+					Schema:EasyText(player, "firebrick", "во время переката вы не можете бичевать себя!");
 					return false;
 				end
 			
@@ -1353,10 +1353,10 @@ function COMMAND:OnRun(player, arguments)
 						
 						if weaponItemTable then
 							local currentOil = weaponItemTable:GetData("oil");
-							local selfless = "himself";
+							local selfless = "себя";
 							
 							if (player:GetGender() == GENDER_FEMALE) then
-								selfless = "herself";
+								selfless = "себя";
 							end
 							
 							if currentOil >= 1 then
@@ -1368,7 +1368,7 @@ function COMMAND:OnRun(player, arguments)
 								player:SetSharedVar("oil", math.Round(weaponItemTable:GetData("oil"), 0));
 								player:EmitSound("ambient/fire/gascan_ignite1.wav");
 								
-								Clockwork.chatBox:AddInTargetRadius(player, "me", "flagellates "..selfless.." with a lit lantern, dousing themselves with burning oil and bursting into flames!", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
+								Clockwork.chatBox:AddInTargetRadius(player, "me", "флагеллирует "..selfless.." себя при помощи лампады, выливая на тело масло и загораясь священенным пламенем!", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
 								
 								return true;
 							else
@@ -1380,22 +1380,22 @@ function COMMAND:OnRun(player, arguments)
 									player:HandleStamina(damage * 2);
 								end
 								
-								Clockwork.chatBox:AddInTargetRadius(player, "me", "flagellates "..selfless.."!", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
+								Clockwork.chatBox:AddInTargetRadius(player, "me", "избивает "..selfless.."!", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
 								
 								return true;
 							end
 						end
 					elseif activeWeapon:GetClass() == "begotten_fists" or !activeWeapon.IsABegottenMelee then
-						Schema:EasyText(player, "firebrick", "You cannot flagellate with this weapon!");
+						Schema:EasyText(player, "firebrick", "Ты не можешь ударить себя этим оружием!");
 						return false;
 					end
 				else
-					Schema:EasyText(player, "firebrick", "You cannot flagellate with this weapon!");
+					Schema:EasyText(player, "firebrick", "Ты не можешь ударить себя этим оружием!");
 					return false;
 				end
 				
 				if player:GetNWBool("Guardening") then
-					Schema:EasyText(player, "firebrick", "You cannot flagellate while blocking!");
+					Schema:EasyText(player, "firebrick", "Ты не можешь ударить себя, находясь в блоке!");
 					return false;
 				end
 				
@@ -1433,10 +1433,10 @@ function COMMAND:OnRun(player, arguments)
 						player:HandleSanity(math.Round(d:GetDamage() / 3));
 					end
 					
-					local selfless = "himself";
+					local selfless = "себя";
 					
 					if (player:GetGender() == GENDER_FEMALE) then
-						selfless = "herself";
+						selfless = "себя";
 					end
 					
 					-- Bellhammer special
@@ -1453,32 +1453,32 @@ function COMMAND:OnRun(player, arguments)
 							end
 						end
 						
-						Clockwork.chatBox:AddInTargetRadius(player, "me", "flagellates "..selfless.." with a thunderous toll of their Bell Hammer!", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
+						Clockwork.chatBox:AddInTargetRadius(player, "me", "избивает "..selfless.." молотом-колоколом, шум которого громовым эхом раздается в помещении!", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
 					else
-						Clockwork.chatBox:AddInTargetRadius(player, "me", "flagellates "..selfless.."!", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
+						Clockwork.chatBox:AddInTargetRadius(player, "me", "избивает "..selfless.."!", player:GetPos(), Clockwork.config:Get("talk_radius"):Get() * 2);
 					end
 					
 					player.nextFlagellate = curTime + (attacktable["delay"] or 1);
 				else
-					Schema:EasyText(player, "firebrick", "You cannot flagellate with this weapon!");
+					Schema:EasyText(player, "firebrick", "Ты не можешь ударить себя этим оружием!");
 				end
 			else
-				Schema:EasyText(player, "firebrick", "You cannot flagellate right now!");
+				Schema:EasyText(player, "firebrick", "Ты не можешь ударить себя сейчас!");
 			end;
 		else
-			Schema:EasyText(player, "firebrick", "You lack the willpower to do this!");
+			Schema:EasyText(player, "firebrick", "У тебя не хватает силы духа, чтобы сделать это!");
 		end
 		
 		player.nextFlagellate = curTime + 1;
 	else
-		Schema:EasyText(player, "firebrick", "You cannot flagellate right now!");
+		Schema:EasyText(player, "firebrick", "Ты не можешь избить себя сейчас!");
 	end
 end;
 
 COMMAND:Register();
 
 local COMMAND = Clockwork.command:New("Suicide");
-COMMAND.tip = "Commit fucking suicide and end your pitiful fucking existence.";
+COMMAND.tip = "Соверши ебучее самоубийство и закончи свое жалкое существование..";
 COMMAND.flags = CMD_DEFAULT;
 COMMAND.arguments = 0;
 
@@ -1488,10 +1488,10 @@ function COMMAND:OnRun(player, arguments)
 		if player:GetSharedVar("tied") == 0 and !player:IsRagdolled() then
 			player:CommitSuicide()
 		else
-			Schema:EasyText(player, "firebrick", "Why the fuck would commit suicide right now? Fuck you.");
+			Schema:EasyText(player, "firebrick", "Ты слишком слаб, чтобы сделать это.");
 		end;
 	else
-		Schema:EasyText(player, "firebrick", "You lack the willpower to do this!");
+		Schema:EasyText(player, "firebrick", "У тебя не хватает силы духа, чтобы сотворить нечто подобное!");
 	end
 end;
 

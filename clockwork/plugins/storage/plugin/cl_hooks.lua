@@ -48,7 +48,7 @@ function cwStorage:HUDPaintEntityTargetID(entity, info)
 			info.y = Clockwork.kernel:DrawInfo("Вы можете положить туда предметы.", info.x, info.y, colorWhite, info.alpha)
 			
 			if (entity:GetNWBool("unlocked", true) == false) then
-				info.y = Clockwork.kernel:DrawInfo("[LOCKED]", info.x, info.y, Color(175, 100, 100), info.alpha);
+				info.y = Clockwork.kernel:DrawInfo("[ЗАКРЫТО]", info.x, info.y, Color(175, 100, 100), info.alpha);
 			end;
 		end
 	end
